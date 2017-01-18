@@ -1,9 +1,10 @@
-package com.ecar.encryption.factory;
+package com.ecar.factory;
 
 import com.ecar.encryption.Epark.EparkEncrypUtil;
 import com.ecar.encryption.ParkFee.ParkFeeEncrypUtil;
 import com.ecar.encryption.RoadPark.RoadParkEncrypUtil;
 import com.ecar.encryption.RoadPda.RoadPdaEncrypUtil;
+import com.ecar.util.TagUtil;
 
 /*************************************
  * 功能： 创建工具类
@@ -13,6 +14,7 @@ import com.ecar.encryption.RoadPda.RoadPdaEncrypUtil;
  *************************************/
 
 public class EncryptionUtilFactory implements IEncryptionUtilFactory {
+
     private static EncryptionUtilFactory encryptionUtilFactory;
 
     private EparkEncrypUtil eparkEncrypUtil;
@@ -24,8 +26,9 @@ public class EncryptionUtilFactory implements IEncryptionUtilFactory {
     private EncryptionUtilFactory() {
     }
 
-     //
-    public static EncryptionUtilFactory getDefault() {
+     //  isPrintLog:true 打印log
+    public static EncryptionUtilFactory getDefault(boolean isPrintLog) {
+        TagUtil.IS_SHOW_LOG=isPrintLog;
         if (encryptionUtilFactory == null) {
             encryptionUtilFactory = new EncryptionUtilFactory();
         }

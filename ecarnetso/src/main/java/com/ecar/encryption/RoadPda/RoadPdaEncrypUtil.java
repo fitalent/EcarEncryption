@@ -14,11 +14,13 @@ public class RoadPdaEncrypUtil extends EncryUtil {
     public String sign(String url,
                        String signParam,
                        String requestKey) {
-        String result= mSign(
+        String result = mSign(
                 url,
                 signParam,
                 requestKey);
-        return result==null?"":result;
+
+        printResult(result);
+        return result == null ? "" : result;
 
     }
 

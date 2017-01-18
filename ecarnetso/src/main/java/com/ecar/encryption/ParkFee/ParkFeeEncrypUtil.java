@@ -25,6 +25,8 @@ public class ParkFeeEncrypUtil extends EncryUtil {
                 imei,
                 trampTime,
                 sid);
+
+        printResult(result);
         return result == null ? "" : result;
 
     }

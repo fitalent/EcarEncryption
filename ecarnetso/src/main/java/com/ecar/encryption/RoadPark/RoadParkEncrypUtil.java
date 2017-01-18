@@ -27,6 +27,8 @@ public class RoadParkEncrypUtil extends EncryUtil {
                 imei,
                 trampTime,
                 sid);
+        printResult(result);
+
         return result == null ? "" : result;
 
     }
@@ -36,6 +38,8 @@ public class RoadParkEncrypUtil extends EncryUtil {
         String result = mGetEncryptionUrl(
                 url,
                 key);
+        printResult(result);
+
         return result == null ? "" : result;
 
     }

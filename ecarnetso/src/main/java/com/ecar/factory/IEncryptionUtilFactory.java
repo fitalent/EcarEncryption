@@ -1,4 +1,4 @@
-package com.ecar.encryption.factory;
+package com.ecar.factory;
 
 import com.ecar.encryption.IEncryptionUtil;
 

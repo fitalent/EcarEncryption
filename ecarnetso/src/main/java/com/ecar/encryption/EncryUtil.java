@@ -1,7 +1,9 @@
 package com.ecar.encryption;
 
 
-public class EncryUtil  implements IEncryptionUtil{
+import com.ecar.util.TagUtil;
+
+public class EncryUtil implements IEncryptionUtil {
     static {
         System.loadLibrary("ENCRYP");
     }
@@ -26,6 +28,11 @@ public class EncryUtil  implements IEncryptionUtil{
 
     //pda
     protected native String mSign(String url, String signParam, String requestKey);
+
+
+    protected void printResult(String result) {
+        TagUtil.showLogDebug(result==null?"加密后结果为空":"加密后结果".concat(result));
+    }
 
 
 }
