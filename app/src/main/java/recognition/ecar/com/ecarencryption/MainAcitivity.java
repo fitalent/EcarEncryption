@@ -29,12 +29,12 @@ public class MainAcitivity extends Activity {
     }
 
 
+
     private void printResult() {
 
         isEquels("http://192.168.0.115:7072//otherapi/Index.aspx?versontype=1&method=getappversion&versioncode=14&versionname=1.2.1&ostype=android&phonemodel=SM705",
                 (EncryptionUtilFactory.getDefault().createRoadPark().urlParse(
-                        ""
-//                        "http://192.168.0.115:7072//Index.aspx?versontype=1&t=other&method=getappversion&versioncode=14&versionname=1.2.1&ostype=android&phonemodel=SM705"
+                        "http://192.168.0.115:7072//Index.aspx?versontype=1&t=other&method=getappversion&versioncode=14&versionname=1.2.1&ostype=android&phonemodel=SM705"
                 )));
 
         isEquels(EncryptionUtilFactory.getDefault().createRoadPark().getEncryptionUrl(

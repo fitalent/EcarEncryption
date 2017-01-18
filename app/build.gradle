@@ -10,18 +10,12 @@ android {
         versionCode 1
         versionName "1.0"
 
-        //让32位编译的.so文件能运行在64位的手机上（前提代码支持64位）
-        ndk {
-            abiFilters "armeabi", "armeabi-v7a", "x86", "LPR"
-        }
-        // 配置NDK
-    }
-//    tasks.withType(JavaCompile) {
-//        compileTask -> compileTask.dependsOn 'ndkBuild', 'copyJniLibs'
-//    }
-    packagingOptions {
 
-        exclude 'META-INF/LICENSE.txt'
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "ENCRYP"
+        }
+        //让32位编译的.so文件能运行在64位的手机上（前提代码支持64位）
+        // 配置NDK
     }
     buildTypes {
         release {
