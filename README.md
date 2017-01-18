@@ -40,10 +40,7 @@
     }
     }
     
-    2.调用加密方法
+2.调用加密方法
 ------------------------------------------
-    例子：路边停车
-    EncryptionUtilFactory.getDefault().createRoadPark().urlParse(
-//                        ""
-                        "http://192.168.0.115:7072//Index.aspx?versontype=1&t=other&method=getappversion&versioncode=14&versionname=1.2.1&ostype=android&phonemodel=SM705"
-                   )
+      例子：路边停车urlParse
+      String newUrl= EncryptionUtilFactory.getDefault().createRoadPark().urlParse(String url);
