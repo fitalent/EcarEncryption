@@ -20,19 +20,23 @@ public class RoadParkEncrypUtil extends EncryUtil {
                                          String imei,
                                          String trampTime,
                                          String sid) {
-        return mGetEncryptionValuePair(
+        String result = mGetEncryptionValuePair(
                 url,
                 signKey,
                 appKey,
                 imei,
                 trampTime,
                 sid);
+        return result == null ? "" : result;
+
     }
 
     public String getEncryptionUrl(String url,
                                    String key) {
-        return mGetEncryptionUrl(
+        String result = mGetEncryptionUrl(
                 url,
                 key);
+        return result == null ? "" : result;
+
     }
 }

@@ -17,13 +17,16 @@ public class ParkFeeEncrypUtil extends EncryUtil {
             String imei,
             String trampTime,
             String sid) {
-        return mGetEncryptionValuePair_YTC(
+
+        String result = mGetEncryptionValuePair_YTC(
                 url,
                 signKey,
                 appKey,
                 imei,
                 trampTime,
                 sid);
+        return result == null ? "" : result;
+
     }
 
 }
