@@ -1,38 +1,41 @@
 package com.ecar.encryption;
 
 
-import com.ecar.util.TagUtil;
-
-public class EncryUtil implements IEncryptionUtil {
+public class EncryUtil {
     static {
         System.loadLibrary("ENCRYP");
     }
 
+    //public
+    protected static native String mGetMD5Code(String str);
+
+    protected static native String mBinstrToChar(String str);
+
+    protected static native String mBinstrToStr(String str);
+
+    protected static native String mStrToBinstr(String str);
+
+    protected static native String mGetAppendUrl(String str);
+
 
     //roadparking
-    protected native String mUrlParse(String url);
+    public static native String mUrlParse(String url);
 
-    protected native String mGetEncryptionValuePair(String url,
-                                                    String signKey,
-                                                    String appKey,
-                                                    String imei,
-                                                    String trampTime,
-                                                    String sid);
+    public static native String mGetEncryptionValuePair(String url,
+                                                        String signKey,
+                                                        String appKey,
+                                                        String imei,
+                                                        String trampTime,
+                                                        String sid);
 
-    protected native String mGetEncryptionUrl(String url,
-                                              String key);
+    public static native String mGetEncryptionUrl(String url,
+                                                  String key);
 
     //yitingche
-    protected native String mGetEncryptionValuePair_YTC(String url, String signKey, String appKey, String imei, String trampTime, String sid);
+    public static native String mGetEncryptionValuePair_YTC(String url, String signKey, String appKey, String imei, String trampTime, String sid);
 
 
     //pda
-    protected native String mSign(String url, String signParam, String requestKey);
-
-
-    protected void printResult(String result) {
-        TagUtil.showLogDebug(result==null?"加密后结果为空":"加密后结果".concat(result));
-    }
-
+    public static native String mSign(String url, String signParam, String requestKey);
 
 }

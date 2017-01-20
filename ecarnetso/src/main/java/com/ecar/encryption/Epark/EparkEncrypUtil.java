@@ -1,6 +1,6 @@
 package com.ecar.encryption.Epark;
 
-import com.ecar.encryption.EncryUtil;
+import com.ecar.encryption.EncryUtilImpl;
 
 /*************************************
  * 功能： 一体化加密
@@ -9,7 +9,7 @@ import com.ecar.encryption.EncryUtil;
  * 版权所有：深圳市亿车科技有限公司
  *************************************/
 
-public class EparkEncrypUtil extends EncryUtil{
+public class EparkEncrypUtil extends EncryUtilImpl {
 
 
 }

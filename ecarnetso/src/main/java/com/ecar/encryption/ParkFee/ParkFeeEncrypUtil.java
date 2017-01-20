@@ -1,6 +1,9 @@
 package com.ecar.encryption.ParkFee;
 
 import com.ecar.encryption.EncryUtil;
+import com.ecar.encryption.EncryUtilImpl;
+
+import static com.ecar.util.TagUtil.printResult;
 
 /*************************************
  * 功能：
@@ -9,7 +12,7 @@ import com.ecar.encryption.EncryUtil;
  * 版权所有：深圳市亿车科技有限公司
  *************************************/
 
-public class ParkFeeEncrypUtil extends EncryUtil {
+public class ParkFeeEncrypUtil extends EncryUtilImpl {
     public String getEncryptionValuePair(
             String url,
             String signKey,

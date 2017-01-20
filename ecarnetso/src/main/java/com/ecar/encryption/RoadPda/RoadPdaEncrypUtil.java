@@ -1,6 +1,7 @@
 package com.ecar.encryption.RoadPda;
 
-import com.ecar.encryption.EncryUtil;
+import com.ecar.encryption.EncryUtilImpl;
+import com.ecar.util.TagUtil;
 
 /*************************************
  * 功能：
@@ -9,7 +10,7 @@ import com.ecar.encryption.EncryUtil;
  * 版权所有：深圳市亿车科技有限公司
  *************************************/
 
-public class RoadPdaEncrypUtil extends EncryUtil {
+public class RoadPdaEncrypUtil extends EncryUtilImpl {
 
     public String sign(String url,
                        String signParam,
@@ -19,7 +20,7 @@ public class RoadPdaEncrypUtil extends EncryUtil {
                 signParam,
                 requestKey);
 
-        printResult(result);
+        TagUtil.printResult(result);
         return result == null ? "" : result;
 
     }

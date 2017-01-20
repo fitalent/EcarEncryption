@@ -1,6 +1,6 @@
 package com.ecar.factory;
 
-import com.ecar.encryption.IEncryptionUtil;
+import com.ecar.encryption.EncryUtil;
 
 /*************************************
  * 功能：
@@ -10,8 +10,8 @@ import com.ecar.encryption.IEncryptionUtil;
  *************************************/
 
 public interface IEncryptionUtilFactory {
-    IEncryptionUtil createEpark();//一体化
-    IEncryptionUtil creatParkFee();//宜停车
-    IEncryptionUtil createRoadPark();//路边(不包含宜停车)
-    IEncryptionUtil createRoadPda();//路边PDA
+    EncryUtil createEpark();//一体化
+    EncryUtil creatParkFee();//宜停车
+    EncryUtil createRoadPark();//路边(不包含宜停车)
+    EncryUtil createRoadPda();//路边PDA
 }

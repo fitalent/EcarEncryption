@@ -1,21 +1,37 @@
-package com.ecar.encryption.RoadPark;
+package com.ecar.encryption;
 
-import com.ecar.encryption.EncryUtilImpl;
+
 import com.ecar.util.TagUtil;
 
-/*************************************
- * 功能： 路边停车加密
- * 创建者： kim_tony
- * 创建日期：2017/1/17
- * 版权所有：深圳市亿车科技有限公司
- *************************************/
+import static com.ecar.util.TagUtil.printResult;
 
-public class RoadParkEncrypUtil extends EncryUtilImpl {
+public class EncryUtilImpl extends EncryUtil {
+    public String getEncryptionValuePair(
+            String url,
+            String signKey,
+            String appKey,
+            String imei,
+            String trampTime,
+            String sid) {
+
+        String result = mGetEncryptionValuePair_YTC(
+                url,
+                signKey,
+                appKey,
+                imei,
+                trampTime,
+                sid);
+
+        printResult(result);
+        return result == null ? "" : result;
+
+    }
+
     public String urlParse(String url) {
         return mUrlParse(url);
     }
 
-    public String getEncryptionValuePair(String url,
+    public String getEncryptionValuePair_YiTingCHe(String url,
                                          String signKey,
                                          String appKey,
                                          String imei,
@@ -44,4 +60,7 @@ public class RoadParkEncrypUtil extends EncryUtilImpl {
         return result == null ? "" : result;
 
     }
+
+
+
 }
