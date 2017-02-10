@@ -1,9 +1,6 @@
 package com.ecar.encryption.ParkFee;
 
-import com.ecar.encryption.EncryUtil;
-import com.ecar.encryption.EncryUtilImpl;
-
-import static com.ecar.util.TagUtil.printResult;
+import com.ecar.encryption.base.EncryUtilImpl;
 
 /*************************************
  * 功能：
@@ -13,25 +10,8 @@ import static com.ecar.util.TagUtil.printResult;
  *************************************/
 
 public class ParkFeeEncrypUtil extends EncryUtilImpl {
-    public String getEncryptionValuePair(
-            String url,
-            String signKey,
-            String appKey,
-            String imei,
-            String trampTime,
-            String sid) {
-
-        String result = mGetEncryptionValuePair_YTC(
-                url,
-                signKey,
-                appKey,
-                imei,
-                trampTime,
-                sid);
-
-        printResult(result);
-        return result == null ? "" : result;
-
+    @Override
+    public String getEncryptionValuePair_YiTingChe(String url, String signKey, String appKey, String imei, String trampTime, String sid) {
+        return super.getEncryptionValuePair_YiTingChe(url, signKey, appKey, imei, trampTime, sid);
     }
-
 }

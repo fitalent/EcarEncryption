@@ -7,35 +7,63 @@ public class EncryUtil {
     }
 
     //public
-    protected static native String mGetMD5Code(String str);
+    public static native String mGetMD5Code(String str);
 
-    protected static native String mBinstrToChar(String str);
+    public static native String mBinstrToChar(String str);
 
-    protected static native String mBinstrToStr(String str);
+    public static native String mBinstrToStr(String str);
 
-    protected static native String mStrToBinstr(String str);
+    public static native String mStrToBinstr(String str);
 
-    protected static native String mGetAppendUrl(String str);
+    public static native String mGetAppendUrl(String baseUrl,String treeMap,String parkUserUrl);
+
+    public static native String mGetEncodedStr(String str);
+
+
+    //yitihua
+    protected static native String mGetSecurityMapKeys(String tMap,
+                                                       boolean encode,
+                                                       boolean isSign,
+                                                       String appid,
+                                                       String requestKey);
+
+    protected static native boolean mCheckSign(String sign,
+                                              String content,
+                                              String requestKey);
+
+    protected static native String mGetSecurityKeys(String tMap,
+                                                    String appid,
+                                                    String requestKey,
+                                                    boolean encode,
+                                                    boolean isSign
+    );
 
 
     //roadparking
-    public static native String mUrlParse(String url);
+    protected static native String mUrlParse(String url);
 
-    public static native String mGetEncryptionValuePair(String url,
-                                                        String signKey,
-                                                        String appKey,
-                                                        String imei,
-                                                        String trampTime,
-                                                        String sid);
+    protected static native String mGetEncryptionValuePair(String url,
+                                                           String signKey,
+                                                           String appKey,
+                                                           String imei,
+                                                           String trampTime,
+                                                           String sid);
 
-    public static native String mGetEncryptionUrl(String url,
-                                                  String key);
+    protected static native String mGetEncryptionUrl(String url,
+                                                     String key);
 
     //yitingche
-    public static native String mGetEncryptionValuePair_YTC(String url, String signKey, String appKey, String imei, String trampTime, String sid);
+    protected static native String mGetEncryptionValuePair_YTC(String url,
+                                                               String signKey,
+                                                               String appKey,
+                                                               String imei,
+                                                               String trampTime,
+                                                               String sid);
 
 
     //pda
-    public static native String mSign(String url, String signParam, String requestKey);
+    protected static native String mSign(String url,
+                                         String signParam,
+                                         String requestKey);
 
 }

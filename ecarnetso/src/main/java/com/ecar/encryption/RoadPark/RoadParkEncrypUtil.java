@@ -1,7 +1,6 @@
 package com.ecar.encryption.RoadPark;
 
-import com.ecar.encryption.EncryUtilImpl;
-import com.ecar.util.TagUtil;
+import com.ecar.encryption.base.EncryUtilImpl;
 
 /*************************************
  * 功能： 路边停车加密
@@ -11,37 +10,19 @@ import com.ecar.util.TagUtil;
  *************************************/
 
 public class RoadParkEncrypUtil extends EncryUtilImpl {
+
+    @Override
     public String urlParse(String url) {
-        return mUrlParse(url);
+        return super.urlParse(url);
     }
 
-    public String getEncryptionValuePair(String url,
-                                         String signKey,
-                                         String appKey,
-                                         String imei,
-                                         String trampTime,
-                                         String sid) {
-        String result = mGetEncryptionValuePair(
-                url,
-                signKey,
-                appKey,
-                imei,
-                trampTime,
-                sid);
-        TagUtil.printResult(result);
-
-        return result == null ? "" : result;
-
+    @Override
+    public String getEncryptionValuePair(String url, String signKey, String appKey, String imei, String trampTime, String sid) {
+        return super.getEncryptionValuePair(url, signKey, appKey, imei, trampTime, sid);
     }
 
-    public String getEncryptionUrl(String url,
-                                   String key) {
-        String result = mGetEncryptionUrl(
-                url,
-                key);
-        TagUtil.printResult(result);
-
-        return result == null ? "" : result;
-
+    @Override
+    public String getEncryptionUrl(String url, String key) {
+        return super.getEncryptionUrl(url, key);
     }
 }

@@ -20,62 +20,112 @@ public class MainAcitivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                printResult();
-            }
-        }).start();
+        printResult();
     }
-
 
 
     private void printResult() {
+//         公用方法
+        isEquels("43f6d04f2070db68d1254863f3918669",
+                (EncryptionUtilFactory.getDefault(true).createEpark().binstrToStr(
+                        "110100 110011 1100110 110110 1100100 110000 110100 1100110 110010 110000 110111 110000 1100100 1100010 110110 111000 1100100 110001 110010 110101 110100 111000 110110 110011 1100110 110011 111001 110001 111000 110110 110110 111001"
+                )));
+        isEquels("1.1.3-NotMinify%E6%B5%8B%E8%AF%95",
+                (EncryptionUtilFactory.getDefault(true).createEpark().getEncodedStr(
+                        "1.1.3-NotMinify测试"
+                )));
+        isEquels("110100 110011 1100110 110110 1100100 110000 110100 1100110 110010 110000 110111 110000 1100100 1100010 110110 111000 1100100 110001 110010 110101 110100 111000 110110 110011 1100110 110011 111001 110001 111000 110110 110110 111001",
+                (EncryptionUtilFactory.getDefault(true).createEpark().strToBinstr(
+                        "43f6d04f2070db68d1254863f3918669"
+                )));
+        isEquels(
+                "4",
+                ("" + EncryptionUtilFactory.getDefault(true).createEpark().binstrToChar(
+                        "110100"
+                )));
+        isEquels("http://192.168.0.115:7072//Index.aspx?versontype=1&t=member&method=invoiceapply&money=1000&phonenum=18923729010&title=%E5%8F%91%E7%A5%A8&parkuserid=16112518923729010",
+                (EncryptionUtilFactory.getDefault(true).createEpark().getAppendUrl(
+                        "http://192.168.0.115:7072//Index.aspx?versontype=1&t=member&method=invoiceapply",
+                        "{money=1000, phonenum=18923729010, title=%E5%8F%91%E7%A5%A8}",
+                        "16112518923729010"
+                )));
+        isEquels("8ea1f5cfde78541acb2970f5aabe9843",
+                (EncryptionUtilFactory.getDefault(true).createEpark().getMD5Code(
+                        "{abc:缺少参数}"
+                )));
 
-//        isEquels("http://192.168.0.115:7072//otherapi/Index.aspx?versontype=1&method=getappversion&versioncode=14&versionname=1.2.1&ostype=android&phonemodel=SM705",
-//                (EncryptionUtilFactory.getDefault(true).createRoadPark().urlParse(
-//                        "http://192.168.0.115:7072//Index.aspx?versontype=1&t=other&method=getappversion&versioncode=14&versionname=1.2.1&ostype=android&phonemodel=SM705"
-//                )));
+//        一体化
+        isEquels("true",
+                (""+EncryptionUtilFactory.getDefault(true).createEpark().checkSign(
+                        "1ba56e9614e143fed388bca2d70576e8",
+                        "{\"message\":\"缺少参数\",\"ngis\":\"1ba56e9614e143fed388bca2d70576e8\",\"state\":2,\"ts\":1484818412833}",
+                        "1000100 110011 110000 110010 111001 1000011 110111 110011 110100 110000 110110 110010 110010 110001 1000010 110000 110010 110000 110010 110110 1000010 110110 111000 110100 1000010 1000010 110000 110000 110101 110111 111001 1000011"
+                )));
+        isEquels("ClientType=android&appId=904075102&cityname=&comid=200000002&latitude=4.9E-324&longitude=4.9E-324&method=addUseRecord&module=app&phonetype=SM705&service=Std&ts=1486606389319&u=20160510190532888742623268038887&v=20170113111620773151170099329112&ve=2&versin=1.1.4-%E5%BC%80%E5%8F%91&sign=146c0a4b64916874f584669656d87820",
+                (EncryptionUtilFactory.getDefault(true).createEpark().getSecurityKeys(
+                        "{ClientType=android, appId=904075102, cityname=, comid=200000002, latitude=4.9E-324, longitude=4.9E-324, method=addUseRecord, module=app, phonetype=SM705, service=Std, ts=1486606389319, u=20160510190532888742623268038887, v=20170113111620773151170099329112, ve=2, versin=1.1.4-开发}",
+                        "111001 110000 110100 110000 110111 110101 110001 110000 110010",
+                        "1000100 110011 110000 110010 111001 1000011 110111 110011 110100 110000 110110 110010 110010 110001 1000010 110000 110010 110000 110010 110110 1000010 110110 111000 110100 1000010 1000010 110000 110000 110101 110111 111001 1000011",
+                        true,
+                        true
+                )));
+        isEquels(
+                "{ClientType=android, appId=904075102, appcode=4, appname=roadapp, comid=200000002, method=checkForUpdate, module=app, service=Std, sign=afb9350413ed213e1fc64eb299cd8527, ve=2, versionCode=1.1.4-%E5%BC%80%E5%8F%91}",
+                EncryptionUtilFactory.getDefault(true).createEpark().getSecurityMapKeys(
+                        "{ClientType=android, appId=904075102, appcode=4, appname=roadapp, comid=200000002, method=checkForUpdate, module=app, requestKey=D3029C73406221B02026B684BB00579C, service=Std, ve=2, versionCode=1.1.4-开发}",
+                        true,
+                        true,
+                        "904075102",
+                        "D3029C73406221B02026B684BB00579C"
+                ));
+//        路边
+        isEquels("http://192.168.0.115:7072//otherapi/Index.aspx?versontype=1&method=getappversion&versioncode=14&versionname=1.2.1&ostype=android&phonemodel=SM705",
+                (EncryptionUtilFactory.getDefault(true).createRoadPark().urlParse(
+                        "http://192.168.0.115:7072//Index.aspx?versontype=1&t=other&method=getappversion&versioncode=14&versionname=1.2.1&ostype=android&phonemodel=SM705"
+                )));
 
-//        isEquels(EncryptionUtilFactory.getDefault(true).createRoadPark().getEncryptionUrl(
-//                " http://192.168.0.115:7072//otherapi/Index.aspx?versontype=1&method=getappversion&versioncode=14&versionname=1.2.1&ostype=android&phonemodel=SM705&appkey=101280918&security=5fcc6f9cde4e7bca2690488b59d15abf&mobilecode=864593021622278&timestamp=20240117130708&SID=",
-////                 "",
-//                "110100 110011 1100110 110110 1100100 110000 110100 1100110 110010 110000 110111 110000 1100100 1100010 110110 111000 1100100 110001 110010 110101 110100 111000 110110 110011 1100110 110011 111001 110001 111000 110110 110110 111001"
-//                ),
-//                "http://192.168.0.115:7072//otherapi/Index.aspx?versontype=1&method=getappversion&versioncode=14&versionname=1.2.1&ostype=android&phonemodel=SM705&appkey=101280918&security=5fcc6f9cde4e7bca2690488b59d15abf&mobilecode=864593021622278&timestamp=20240117130708&SID=&sign=54be918cb627326f3d5185d06eb5817f"
-//        );
-
-        isEquels(EncryptionUtilFactory.getDefault(true).createRoadPark().getEncryptionValuePair(
-                " http://192.168.0.115:7072//otherapi/Index.aspx?versontype=1&method=getappversion&versioncode=14&versionname=1.2.1&ostype=android&phonemodel=SM705",
-                "110100 110011 1100110 110110 1100100 110000 110100 1100110 110010 110000 110111 110000 1100100 1100010 110110 111000 1100100 110001 110010 110101 110100 111000 110110 110011 1100110 110011 111001 110001 111000 110110 110110 111001",
-                "110001 110000 110001 110010 111000 110000 111001 110001 111000",
-                "864593021622278",
-                "20240117130708",
-                ""),
+        isEquels(EncryptionUtilFactory.getDefault(true).createRoadPark().getEncryptionUrl(
+                " http://192.168.0.115:7072//otherapi/Index.aspx?versontype=1&method=getappversion&versioncode=14&versionname=1.2.1&ostype=android&phonemodel=SM705&appkey=101280918&security=5fcc6f9cde4e7bca2690488b59d15abf&mobilecode=864593021622278&timestamp=20240117130708&SID=",
+                "110100 110011 1100110 110110 1100100 110000 110100 1100110 110010 110000 110111 110000 1100100 1100010 110110 111000 1100100 110001 110010 110101 110100 111000 110110 110011 1100110 110011 111001 110001 111000 110110 110110 111001"
+                ),
                 "http://192.168.0.115:7072//otherapi/Index.aspx?versontype=1&method=getappversion&versioncode=14&versionname=1.2.1&ostype=android&phonemodel=SM705&appkey=101280918&security=5fcc6f9cde4e7bca2690488b59d15abf&mobilecode=864593021622278&timestamp=20240117130708&SID=&sign=54be918cb627326f3d5185d06eb5817f"
         );
-//        isEquels(EncryptionUtilFactory.getDefault(true).creatParkFee().getEncryptionValuePair(
-//                "http://192.168.0.115:7072//transactionapi/Index.aspx?versontype=1&method=parking&parkuserid=16112518923729010",
-//                "110100 110011 1100110 110110 1100100 110000 110100 1100110 110010 110000 110111 110000 1100100 1100010 110110 111000 1100100 110001 110010 110101 110100 111000 110110 110011 1100110 110011 111001 110001 111000 110110 110110 111001",
-//                "110001 110000 110001 110010 111000 110000 111001 110001 111000",
-//                "352571070386572",
-//                "20170118161016",
-//                "20170118161016"
-//                ),
-//                "http://183.62.162.254:8899/transactionapi/Index.aspx?versontype=1&method=parking&parkuserid=15041418923729010&appkey=101280918&security=9c5fa30e1d52ecf7fcfc28c6c018271f&mobilecode=864593021622278&timestamp=20170117142237&SID=sid2fa6b1f6a21fd90850cdec8b1ddcec7c&sign=e0239f878302ac074ba3c0ee6a0fbb81"
-//        );
-//        isEquels(EncryptionUtilFactory.getDefault(true).createRoadPda().sign(
-//                "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=equipinfo",
-//                "[Appkey=606300949, Security=5b82066ec0544ecc66d5ed62a7bce3de, adduserid=746, equiptype=1, faultcode=03, ordercontent=下半年你先休息, MD50=961524aa7d3a17bcf869227afa8604a2]",
-//                "e40a1c78080249df994eaedb833d0434"
-//                ),
-//                "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=equipinfo&sign=c131fea6fe173474e30b26ed7e073a49"
-//        );
+
+        isEquels(EncryptionUtilFactory.getDefault(true).createRoadPark().getEncryptionValuePair(
+                "http://szchmtech.3322.org:7072/memberapi/Index.aspx?versontype=1&method=getrechargelimit",
+                "110100 110011 1100110 110110 1100100 110000 110100 1100110 110010 110000 110111 110000 1100100 1100010 110110 111000 1100100 110001 110010 110101 110100 111000 110110 110011 1100110 110011 111001 110001 111000 110110 110110 111001",
+                "110001 110000 110001 110010 111000 110000 111001 110001 111000",
+                "355066066194848",
+                "20170109195613",
+                "side26e7777fdb60dc96fdbebb94dbd480c"),
+                "http://szchmtech.3322.org:7072/memberapi/Index.aspx?versontype=1&method=getrechargelimit&appkey=101280918&security=a4fcfb7323f9bc7b9503e961d97b93e0&mobilecode=355066066194848&timestamp=20170109195613&SID=side26e7777fdb60dc96fdbebb94dbd480c&sign=868f171b70278179a018bbc683ddc329"
+        );
+
+//        宜停车
+        isEquels(EncryptionUtilFactory.getDefault(true).creatParkFee().getEncryptionValuePair_YiTingChe(
+                "http://192.168.0.115:7072//memberapi/Index.aspx?versontype=1&method=balanceinquiry&parkuserid=16112518923729010",
+                "110100 110011 1100110 110110 1100100 110000 110100 1100110 110010 110000 110111 110000 1100100 1100010 110110 111000 1100100 110001 110010 110101 110100 111000 110110 110011 1100110 110011 111001 110001 111000 110110 110110 111001",
+                "110001 110000 110001 110010 111000 110000 111001 110001 111000",
+                "355066066194848",
+                "20170110111959",
+                "sidf0314ac0118b4e648698914262ea7db7"
+                ),
+                "http://192.168.0.115:7072//memberapi/Index.aspx?versontype=1&method=balanceinquiry&parkuserid=16112518923729010&appkey=101280918&security=1f59cd3e694079d639319338dbad5069&mobilecode=355066066194848&timestamp=20170110111959&SID=sidf0314ac0118b4e648698914262ea7db7&sign=bea13df1f202159a2d9c85ee3e299b53"
+        );
+
+//        路边PDA
+        isEquels(EncryptionUtilFactory.getDefault(true).createRoadPda().sign(
+                "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=equipinfo",
+                "[Appkey=606300949, Security=5b82066ec0544ecc66d5ed62a7bce3de, adduserid=746, equiptype=1, faultcode=03, ordercontent=下半年你先休息, MD50=961524aa7d3a17bcf869227afa8604a2]",
+                "e40a1c78080249df994eaedb833d0434"
+                ),
+                "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=equipinfo&sign=c131fea6fe173474e30b26ed7e073a49"
+        );
     }
 
     private void isEquels(String str1, String str2) {
-        Log.d("tagutil", "isEquels: str1=" + str1);
-        Log.d("tagutil", "isEquels: str2=" + str2);
+        Log.d("tagutil", "isEquels: 标准值=" + str1);
+        Log.d("tagutil", "isEquels: 加密后=" + str2);
 
         if (!TextUtils.isEmpty(str1) && !TextUtils.isEmpty(str2))
             Log.d("tagutil", "isEquels: " + str1.trim().equals(str2.trim()));

@@ -1,6 +1,6 @@
 package com.ecar.encryption.Epark;
 
-import com.ecar.encryption.EncryUtilImpl;
+import com.ecar.encryption.base.EncryUtilImpl;
 
 /*************************************
  * 功能： 一体化加密
@@ -10,6 +10,25 @@ import com.ecar.encryption.EncryUtilImpl;
  *************************************/
 
 public class EparkEncrypUtil extends EncryUtilImpl {
+
+    @Override
+    public String getSecurityKeys( String tMap,
+                                   String appid,
+                                   String requestKey,
+                                   boolean isEncode,
+                                   boolean isCheck) {
+        return super.getSecurityKeys(tMap, appid, requestKey, isEncode,isCheck);
+    }
+
+    @Override
+    public String getSecurityMapKeys(String tMap, boolean encode, boolean isSign, String appid, String requestKey) {
+        return super.getSecurityMapKeys(tMap, encode, isSign, appid, requestKey);
+    }
+
+    @Override
+    public boolean checkSign(String sign, String content, String requestKey) {
+        return super.checkSign(sign, content, requestKey);
+    }
 
 
 }

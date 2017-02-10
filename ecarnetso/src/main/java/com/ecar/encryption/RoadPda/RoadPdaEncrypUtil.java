@@ -1,7 +1,6 @@
 package com.ecar.encryption.RoadPda;
 
-import com.ecar.encryption.EncryUtilImpl;
-import com.ecar.util.TagUtil;
+import com.ecar.encryption.base.EncryUtilImpl;
 
 /*************************************
  * 功能：
@@ -12,17 +11,8 @@ import com.ecar.util.TagUtil;
 
 public class RoadPdaEncrypUtil extends EncryUtilImpl {
 
-    public String sign(String url,
-                       String signParam,
-                       String requestKey) {
-        String result = mSign(
-                url,
-                signParam,
-                requestKey);
-
-        TagUtil.printResult(result);
-        return result == null ? "" : result;
-
+    @Override
+    public String sign(String url, String signParam, String requestKey) {
+        return super.sign(url, signParam, requestKey);
     }
-
 }
