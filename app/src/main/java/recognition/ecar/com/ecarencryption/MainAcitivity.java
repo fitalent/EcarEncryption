@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.ecar.factory.EncryptionUtilFactory;
+import com.ecar.util.CastStringUtil;
 
 
 /*************************************
@@ -80,7 +81,7 @@ public class MainAcitivity extends Activity {
         isEquels("getSecurityMapKeys",
                 "{ClientType=android, appId=904075102, appcode=4, appname=roadapp, comid=200000002, method=checkForUpdate, module=app, service=Std, sign=afb9350413ed213e1fc64eb299cd8527, ve=2, versionCode=1.1.4-%E5%BC%80%E5%8F%91}",
                 EncryptionUtilFactory.getDefault(true).createEpark().getSecurityMapKeys(
-                        "{ClientType=android, appId=904075102, appcode=4, appname=roadapp, comid=200000002, method=checkForUpdate, module=app, requestKey=D3029C73406221B02026B684BB00579C, service=Std, ve=2, versionCode=1.1.4-开发}",
+                        "{ClientType=android, method=getParkingConsultation, module=app, pageIndex=1, pageSize=2, service=Std, title=1, ts=1487039628680, u=, v=}",
                         true,
                         true,
                         "904075102",
@@ -138,6 +139,8 @@ public class MainAcitivity extends Activity {
                         "e40a1c78080249df994eaedb833d0434"
                 )
         );
+        CastStringUtil.stringToTreeMap(
+                "{ClientType=android, appId=904075102, method=getParkingConsultation, module=app, pageIndex=1, pageSize=2, service=Std, sign=360711cc75778bd2a2d91f0e3b2e5a2b, title=1, ts=1487039628680, u=, v=, ve=2}");
     }
 
     private void isEquels(String method, String str1, String str2) {

@@ -159,7 +159,6 @@ public class EncryUtilImpl extends EncryUtil {
 
         TagUtil.printResult(result);
         return result == null ? "" : result;
-
     }
 
 
