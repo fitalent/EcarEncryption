@@ -78,13 +78,13 @@ public class MainAcitivity extends Activity {
                         true
                 )));
         isEquels("getSecurityMapKeys",
-                "{ClientType=android, appId=904075102, appcode=4, appname=roadapp, comid=200000002, method=checkForUpdate, module=app, service=Std, sign=afb9350413ed213e1fc64eb299cd8527, ve=2, versionCode=1.1.4-%E5%BC%80%E5%8F%91}",
+                "{ClientType=android, method=appLogin, module=app, service=Std, sign=56881eec8b018639427a0c6570e43e5a, ts=1487385892494, userPhoneNum=18670006357, userPwd=dc483e80a7a0bd9ef71d8cf973673924}",
                 EncryptionUtilFactory.getDefault(true).createEpark().getSecurityMapKeys(
-                       "{ClientType=android, comid=200000023, method=getParkingConsultation, module=app, pageIndex=1, pageSize=2, service=Std, title=1, ts=1487319647015, u=, v=, ve=2}",
+                        "{ClientType=android, method=appLogin, module=app, service=Std, ts=1487385892494, userPhoneNum=18670006357, userPwd=dc483e80a7a0bd9ef71d8cf973673924}",
                         true,
                         true,
-                        true,
-                        "904075102",
+                        false,
+                        "",
                         "D3029C73406221B02026B684BB00579C"
                 ));
 //        路边
