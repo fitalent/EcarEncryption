@@ -50,6 +50,7 @@ public class EncryUtilImpl extends EncryUtil {
             String tMap,
             boolean encode,
             boolean isSign,
+            boolean isNeedVe,
             String appid,
             String requestKey) {
 
@@ -57,6 +58,7 @@ public class EncryUtilImpl extends EncryUtil {
                 tMap,
                 encode,
                 isSign,
+                isNeedVe,
                 appid,
                 requestKey
         );

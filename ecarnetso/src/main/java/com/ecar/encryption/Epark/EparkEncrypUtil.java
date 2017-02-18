@@ -21,8 +21,8 @@ public class EparkEncrypUtil extends EncryUtilImpl {
     }
 
     @Override
-    public String getSecurityMapKeys(String tMap, boolean encode, boolean isSign, String appid, String requestKey) {
-        return super.getSecurityMapKeys(tMap, encode, isSign, appid, requestKey);
+    public String getSecurityMapKeys(String tMap, boolean encode, boolean isSign,boolean isNeedVe, String appid, String requestKey) {
+        return super.getSecurityMapKeys(tMap, encode, isSign,isNeedVe, appid, requestKey);
     }
 
     @Override

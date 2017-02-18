@@ -24,6 +24,7 @@ public class EncryUtil {
     protected static native String mGetSecurityMapKeys(String tMap,
                                                        boolean encode,
                                                        boolean isSign,
+                                                       boolean isNeedVe,
                                                        String appid,
                                                        String requestKey);
 
