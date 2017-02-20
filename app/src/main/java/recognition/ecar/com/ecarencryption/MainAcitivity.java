@@ -80,7 +80,7 @@ public class MainAcitivity extends Activity {
         isEquels("getSecurityMapKeys",
                 "{ClientType=android, method=appLogin, module=app, service=Std, sign=56881eec8b018639427a0c6570e43e5a, ts=1487385892494, userPhoneNum=18670006357, userPwd=dc483e80a7a0bd9ef71d8cf973673924}",
                 EncryptionUtilFactory.getDefault(true).createEpark().getSecurityMapKeys(
-                        "{ClientType=android, method=appLogin, module=app, service=Std, ts=1487385892494, userPhoneNum=18670006357, userPwd=dc483e80a7a0bd9ef71d8cf973673924}",
+                        "{ClientType=android, method=signApp, module=app, service=Std, ts=1487385892494, userPhoneNum=18670006357, userPwd=dc483e80a7a0bd9ef71d8cf973673924}",
                         true,
                         true,
                         false,
