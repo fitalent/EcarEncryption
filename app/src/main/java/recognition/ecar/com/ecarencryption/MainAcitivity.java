@@ -33,9 +33,11 @@ public class MainAcitivity extends Activity {
 
                 )));
         isEquels("getEncodedStr",
-                "1.1.3-NotMinify%E6%B5%8B%E8%AF%95",
+//                "1.1.3-NotMinify%E6%B5%8B%E8%AF%95",
+                "vivo+V3Max+A",
                 (EncryptionUtilFactory.getDefault(true).createEpark().getEncodedStr(
-                        "1.1.3-NotMinify测试"
+//                        "1.1.3-NotMinify测试"
+                        "vivo V3Max A"
                 )));
         isEquels("strToBinstr",
                 "110100 110011 1100110 110110 1100100 110000 110100 1100110 110010 110000 110111 110000 1100100 1100010 110110 111000 1100100 110001 110010 110101 110100 111000 110110 110011 1100110 110011 111001 110001 111000 110110 110110 111001",
@@ -78,13 +80,13 @@ public class MainAcitivity extends Activity {
                         true
                 )));
         isEquels("getSecurityMapKeys",
-                "{ClientType=android, method=appLogin, module=app, service=Std, sign=56881eec8b018639427a0c6570e43e5a, ts=1487385892494, userPhoneNum=18670006357, userPwd=dc483e80a7a0bd9ef71d8cf973673924}",
+                "{ClientType=android, appId=904075102, appcode=4, appname=roadapp, comid=200000002, method=checkForUpdate, module=app, service=Std, sign=afb9350413ed213e1fc64eb299cd8527, ve=2, versionCode=1.1.4-%E5%BC%80%E5%8F%91}",
                 EncryptionUtilFactory.getDefault(true).createEpark().getSecurityMapKeys(
-                        "{ClientType=android, method=signApp, module=app, service=Std, ts=1487385892494, userPhoneNum=18670006357, userPwd=dc483e80a7a0bd9ef71d8cf973673924}",
+                        "{appId=904075102, appname=roadpda, method=getPDAVersion, module=pda, service=Std, sign=bd6964a4700fda675ee0f7b7c21e41cf, terminalno=352482033269949, ve=2, version=1}",
                         true,
                         true,
-                        false,
-                        "",
+                        true,
+                        "904075102",
                         "D3029C73406221B02026B684BB00579C"
                 ));
 //        路边
