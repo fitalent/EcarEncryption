@@ -29,8 +29,7 @@ public class MainAcitivity extends Activity {
         isEquels("binstrToStr",
                 "43f6d04f2070db68d1254863f3918669",
                 (EncryptionUtilFactory.getDefault(true).createEpark().binstrToStr(
-                        "110100 110011 1100110 110110 1100100 110000 110100 1100110 110010 110000 110111 110000 1100100 1100010 110110 111000 1100100 110001 110010 110101 110100 111000 110110 110011 1100110 110011 111001 110001 111000 110110 110110 111001"
-
+                        "1100101 110001 110000 1100001 1100100 1100011 110011 111001 110100 111001 1100010 1100001 110101 111001 1100001 1100010 1100010 1100101 110101 110110 1100101 110000 110101 110111 1100110 110010 110000 1100110 111000 111000 110011 1100101"
                 )));
         isEquels("getEncodedStr",
 //                "1.1.3-NotMinify%E6%B5%8B%E8%AF%95",
@@ -82,16 +81,17 @@ public class MainAcitivity extends Activity {
         isEquels("getSecurityMapKeys",
                 "{ClientType=android, appId=904075102, appcode=4, appname=roadapp, comid=200000002, method=checkForUpdate, module=app, service=Std, sign=afb9350413ed213e1fc64eb299cd8527, ve=2, versionCode=1.1.4-%E5%BC%80%E5%8F%91}",
                 EncryptionUtilFactory.getDefault(true).createEpark().getSecurityMapKeys(
-                        "{ClientType=android, appId=904075102, appcode=4, appname=roadapp, comid=200000002, method=checkForUpdate, module=app, requestKey=D3029C73406221B02026B684BB00579C, service=Std, ve=2, versionCode=1.1.4-开发}",
+//                        "{ClientType=android, appId=904075102, appcode=4, appname=roadapp, comid=200000002, method=checkForUpdate, module=app, requestKey=D3029C73406221B02026B684BB00579C, service=Std, ve=2, versionCode=1.1.4-开发}",
+                        "{ClientType=android, appId=610832058, carcode=123222, carnum=粤EYEUEE, carnumtype=0, comid=200000023, enginecode=1215, isveri=1, method=bindCarnum, module=app, service=Std, ts=1491826103019, u=20161107111233665472771771517800, v=20170410190609804123714103307088}",
                         true,
                         true,
                         true,
-                        "904075102",
+                        "610832058",
                         "D3029C73406221B02026B684BB00579C"
                 ));
 //        路边
         isEquels("urlParse",
-                "http://192.168.0.115:7072//otherapi/Index.aspx?versontype=1&method=getappversion&versioncode=14&versionname=1.2.1&ostype=android&phonemodel=SM705",
+                "http://192.168.0.115:7072//otherapi/Index.aspx?versontype=1,method=getappversion&versioncode=14&versionname=1.2.1&ostype=android&phonemodel=SM705",
                 (EncryptionUtilFactory.getDefault(true).createRoadPark().urlParse(
                         "http://192.168.0.115:7072//Index.aspx?versontype=1&t=other&method=getappversion&versioncode=14&versionname=1.2.1&ostype=android&phonemodel=SM705"
                 )));
@@ -106,10 +106,10 @@ public class MainAcitivity extends Activity {
         );
 
         isEquels("getEncryptionValuePair",
-                "http://192.168.0.115:7072//otherapi/Index.aspx?versontype=1&method=getappversion&versioncode=16&versionname=1.2.3&ostype=android&phonemodel=vivo%20V3Max%20A&appkey=101280918&security=5fcc6f9cde4e7bca2690488b59d15abf&mobilecode=861845039126103&timestamp=20170224133236&SID=&sign=62ee63dfded13fd760b6c38e121735f5" ,
+                "http://192.168.0.115:7072//otherapi/Index.aspx?versontype=1&method=getappversion&versioncode=16&versionname=1.2.3&ostype=android&phonemodel=vivo%20V3Max%20A&appkey=101280918&security=5fcc6f9cde4e7bca2690488b59d15abf&mobilecode=861845039126103&timestamp=20170224133236&SID=&sign=62ee63dfded13fd760b6c38e121735f5",
                 EncryptionUtilFactory.getDefault(true).createRoadPark().getEncryptionValuePair(
                         "http://192.168.0.115:7072//otherapi/Index.aspx?versontype=1&method=getappversion&versioncode=16&versionname=1.2.3&ostype=android&phonemodel=vivo%20V3Max%20A",
-                         "110100 110011 1100110 110110 1100100 110000 110100 1100110 110010 110000 110111 110000 1100100 1100010 110110 111000 1100100 110001 110010 110101 110100 111000 110110 110011 1100110 110011 111001 110001 111000 110110 110110 111001",
+                        "110100 110011 1100110 110110 1100100 110000 110100 1100110 110010 110000 110111 110000 1100100 1100010 110110 111000 1100100 110001 110010 110101 110100 111000 110110 110011 1100110 110011 111001 110001 111000 110110 110110 111001",
                         "110001 110000 110001 110010 111000 110000 111001 110001 111000",
                         "861845039126103",
                         "20170224133236",
@@ -167,11 +167,11 @@ public class MainAcitivity extends Activity {
 
     private void isEquels(String method, String str1, String str2) {
         Log.d("tagutil", method + "标准值=" + str1);
-        Log.d("tagutil", method + " 加密后=" + str2);
+        Log.d("tagutil", method + "加密后=" + str2);
 
         if (!TextUtils.isEmpty(str1) && !TextUtils.isEmpty(str2)) {
             Log.d("tagutil", method + "  result: " + str1.trim().equals(str2.trim()));
-        }else{
+        } else {
             Log.d("tagutil", method + "  result: " + false);
         }
     }
