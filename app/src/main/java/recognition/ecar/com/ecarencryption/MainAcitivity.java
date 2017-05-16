@@ -2,8 +2,10 @@ package recognition.ecar.com.ecarencryption;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.ecar.factory.EncryptionUtilFactory;
 
@@ -27,9 +29,9 @@ public class MainAcitivity extends Activity {
     private void printResult() {
 //         公用方法
         isEquels("binstrToStr",
-                "43f6d04f2070db68d1254863f3918669",
+                "510adc3949ba59abbe56e057f20f883a",
                 (EncryptionUtilFactory.getDefault(true).createEpark().binstrToStr(
-                        "1100101 110001 110000 1100001 1100100 1100011 110011 111001 110100 111001 1100010 1100001 110101 111001 1100001 1100010 1100010 1100101 110101 110110 1100101 110000 110101 110111 1100110 110010 110000 1100110 111000 111000 110011 1100101"
+                        "110101 110001 110000 1100001 1100100 1100011 110011 111001 110100 111001 1100010 1100001 110101 111001 1100001 1100010 1100010 1100101 110101 110110 1100101 110000 110101 110111 1100110 110010 110000 1100110 111000 111000 110011 1100001"
                 )));
         isEquels("getEncodedStr",
 //                "1.1.3-NotMinify%E6%B5%8B%E8%AF%95",
@@ -83,11 +85,11 @@ public class MainAcitivity extends Activity {
                 EncryptionUtilFactory.getDefault(true).createEpark().getSecurityMapKeys(
 //                        "{ClientType=android, appId=904075102, appcode=4, appname=roadapp, comid=200000002, method=checkForUpdate, module=app, requestKey=D3029C73406221B02026B684BB00579C, service=Std, ve=2, versionCode=1.1.4-开发}",
                         "{ClientType=android, appId=610832058, carcode=123222, carnum=粤EYEUEE, carnumtype=0, comid=200000023, enginecode=1215, isveri=1, method=bindCarnum, module=app, service=Std, ts=1491826103019, u=20161107111233665472771771517800, v=20170410190609804123714103307088}",
-                        true,
+                        false,
                         true,
                         true,
                         "610832058",
-                        "D3029C73406221B02026B684BB00579C"
+                        "510adc3949ba59abbe56e057f20f883a"
                 ));
 //        路边
         isEquels("urlParse",
@@ -154,15 +156,34 @@ public class MainAcitivity extends Activity {
         );
 
 //        路边PDA
-        isEquels("sign",
-                "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=equipinfo&sign=c131fea6fe173474e30b26ed7e073a49",
-
-                EncryptionUtilFactory.getDefault(true).createRoadPda().sign(
-                        "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=equipinfo",
-                        "[Appkey=606300949, Security=5b82066ec0544ecc66d5ed62a7bce3de, adduserid=746, equiptype=1, faultcode=03, ordercontent=下半年你先休息, MD50=961524aa7d3a17bcf869227afa8604a2]",
-                        "e40a1c78080249df994eaedb833d0434"
-                )
-        );
+        for (int i = 0; i < 200; i++) {
+            String str1 = "[Appkey=606300949, Security=3c016261e68ea3760ffdcf5693f3fdea, berthcode=219202, parkstatus=0, token=355066066194848, userId=59, username=020108, MD50=0447431223af5457673881260ca7bbff, MD51=4771b54f089fa83400091ec263ab004b]";
+            String str2 = "[Appkey=606300949, Security=5b82066ec0544ecc66d5ed62a7bce3de, adduserid=746, equiptype=1, faultcode=03, ordercontent=下半年你先休息, MD50=961524aa7d3a17bcf869227afa8604a2]";
+            SystemClock.sleep(100);
+            isEquels("sign",
+                    "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=pdacorrection&sign=7dbb183021f5d2e31b3ea823c3fab4e3",
+                    EncryptionUtilFactory.getDefault(true).createRoadPda().sign(
+                            "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=pdacorrection",
+                            i%2==0?str1:str2,
+                            "e40a1c78080249df994eaedb833d0434"
+                    )
+            );
+        }
+        Toast.makeText(MainAcitivity.this, "执行完毕", Toast.LENGTH_SHORT).show();
+//        isEquels("sign",
+////                "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=equipinfo&sign=c131fea6fe173474e30b26ed7e073a49",
+////                EncryptionUtilFactory.getDefault(true).createRoadPda().sign(
+////                        "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=equipinfo",
+////                        "[Appkey=606300949, Security=5b82066ec0544ecc66d5ed62a7bce3de, adduserid=746, equiptype=1, faultcode=03, ordercontent=下半年你先休息, MD50=961524aa7d3a17bcf869227afa8604a2]",
+////                        "e40a1c78080249df994eaedb833d0434"
+////                )
+//                "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=pdacorrection&sign=7dbb183021f5d2e31b3ea823c3fab4e3",
+//                EncryptionUtilFactory.getDefault(true).createRoadPda().sign(
+//                        "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=pdacorrection",
+//                        "[Appkey=606300949, Security=3c016261e68ea3760ffdcf5693f3fdea, berthcode=219202, parkstatus=0, token=355066066194848, userId=59, username=020108, MD50=0447431223af5457673881260ca7bbff, MD51=4771b54f089fa83400091ec263ab004b]",
+//                        "e40a1c78080249df994eaedb833d0434"
+//                )
+//        );
     }
 
     private void isEquels(String method, String str1, String str2) {
