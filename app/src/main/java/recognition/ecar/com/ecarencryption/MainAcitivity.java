@@ -84,10 +84,11 @@ public class MainAcitivity extends Activity {
                 "{ClientType=android, appId=904075102, appcode=4, appname=roadapp, comid=200000002, method=checkForUpdate, module=app, service=Std, sign=afb9350413ed213e1fc64eb299cd8527, ve=2, versionCode=1.1.4-%E5%BC%80%E5%8F%91}",
                 EncryptionUtilFactory.getDefault(true).createEpark().getSecurityMapKeys(
 //                        "{ClientType=android, appId=904075102, appcode=4, appname=roadapp, comid=200000002, method=checkForUpdate, module=app, requestKey=D3029C73406221B02026B684BB00579C, service=Std, ve=2, versionCode=1.1.4-开发}",
-                        "{ClientType=android, appId=610832058, carcode=123222, carnum=粤EYEUEE, carnumtype=0, comid=200000023, enginecode=1215, isveri=1, method=bindCarnum, module=app, service=Std, ts=1491826103019, u=20161107111233665472771771517800, v=20170410190609804123714103307088}",
+//                        "{ClientType=android, appId=610832058, carcode=123222, carnum=粤EYEUEE, carnumtype=0, comid=200000023, enginecode=1215, isveri=1, method=bindCarnum, module=app, service=Std, ts=1491826103019, u=20161107111233665472771771517800, v=20170410190609804123714103307088}",
+                       "{ClientType=android, applyduration=30, applytype=1, berthcode=B100002, channel=1, comid=200000018, method=prepaymentParkingPay, module=app, paytype=4, price=0.81, service=Std, t=7196546423623734915703, ts=1496397719654, u=20170504114006093960886040500491, vehicletype=2}",
                         false,
                         true,
-                        true,
+                        false,
                         "610832058",
                         "510adc3949ba59abbe56e057f20f883a"
                 ));
@@ -132,7 +133,6 @@ public class MainAcitivity extends Activity {
         isEquels(
                 "getEncryptionValuePair_YiTingChe",
                 "http://183.62.162.254:8899/memberapi/Index.aspx?versontype=1&method=login&appversion=2.6.1-debug&mobileno=18923729010&ostype=android_5.1.1&phonetype=vivo%20V3Max%20A&pwd=037760af399974fb5d0125b49a56cbbc&parkuserid=&appkey=101280918&security=0d7c4e48454c3f94e310686fe6772dee&mobilecode=861845039126103&timestamp=20170223235040&SID=&sign=2bc61e64b58c933b40dcf0239ddf1728",
-
                 EncryptionUtilFactory.getDefault(true).creatParkFee().getEncryptionValuePair_YiTingChe(
                         "http://183.62.162.254:8899/memberapi/Index.aspx?versontype=1&method=login&appversion=2.6.1-debug&mobileno=18923729010&ostype=android_5.1.1&phonetype=vivo%20V3Max%20A&pwd=037760af399974fb5d0125b49a56cbbc&parkuserid=",
                         "110100 110011 1100110 110110 1100100 110000 110100 1100110 110010 110000 110111 110000 1100100 1100010 110110 111000 1100100 110001 110010 110101 110100 111000 110110 110011 1100110 110011 111001 110001 111000 110110 110110 111001",
@@ -142,48 +142,34 @@ public class MainAcitivity extends Activity {
                         ""
                 )
         );
-        isEquels(
-                "getEncryptionValuePair_YiTingChe",
-                "http://183.62.162.254:8899/operationapi/Index.aspx?versontype=1&method=addcomplain&parkuserid=15041418923729010&comcontent=%E6%8A%95%E8%AF%89%E5%86%85%E5%AE%B9&appkey=101280918&security=309262c162fb0b81f7034b2db16fb2f6&mobilecode=861845039126103&timestamp=20170223235745&SID=sidedc8e23dc073c5756ac7f9e76d6e1ee4&sign=4d6ea06e8ea5041f805590920e11f822",
-                EncryptionUtilFactory.getDefault(true).creatParkFee().getEncryptionValuePair_YiTingChe(
-                        "http://183.62.162.254:8899/operationapi/Index.aspx?versontype=1&method=addcomplain&parkuserid=15041418923729010&comcontent=%E6%8A%95%E8%AF%89%E5%86%85%E5%AE%B9",
-                        "110100 110011 1100110 110110 1100100 110000 110100 1100110 110010 110000 110111 110000 1100100 1100010 110110 111000 1100100 110001 110010 110101 110100 111000 110110 110011 1100110 110011 111001 110001 111000 110110 110110 111001",
-                        "110001 110000 110001 110010 111000 110000 111001 110001 111000",
-                        "861845039126103",
-                        "20170223235745",
-                        "sidedc8e23dc073c5756ac7f9e76d6e1ee4"
-                )
-        );
-
-//        路边PDA
-        for (int i = 0; i < 200; i++) {
-            String str1 = "[Appkey=606300949, Security=3c016261e68ea3760ffdcf5693f3fdea, berthcode=219202, parkstatus=0, token=355066066194848, userId=59, username=020108, MD50=0447431223af5457673881260ca7bbff, MD51=4771b54f089fa83400091ec263ab004b]";
-            String str2 = "[Appkey=606300949, Security=5b82066ec0544ecc66d5ed62a7bce3de, adduserid=746, equiptype=1, faultcode=03, ordercontent=下半年你先休息, MD50=961524aa7d3a17bcf869227afa8604a2]";
-            SystemClock.sleep(100);
-            isEquels("sign",
-                    "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=pdacorrection&sign=7dbb183021f5d2e31b3ea823c3fab4e3",
-                    EncryptionUtilFactory.getDefault(true).createRoadPda().sign(
-                            "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=pdacorrection",
-                            i%2==0?str1:str2,
-                            "e40a1c78080249df994eaedb833d0434"
-                    )
-            );
-        }
-        Toast.makeText(MainAcitivity.this, "执行完毕", Toast.LENGTH_SHORT).show();
-//        isEquels("sign",
-////                "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=equipinfo&sign=c131fea6fe173474e30b26ed7e073a49",
-////                EncryptionUtilFactory.getDefault(true).createRoadPda().sign(
-////                        "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=equipinfo",
-////                        "[Appkey=606300949, Security=5b82066ec0544ecc66d5ed62a7bce3de, adduserid=746, equiptype=1, faultcode=03, ordercontent=下半年你先休息, MD50=961524aa7d3a17bcf869227afa8604a2]",
-////                        "e40a1c78080249df994eaedb833d0434"
-////                )
-//                "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=pdacorrection&sign=7dbb183021f5d2e31b3ea823c3fab4e3",
-//                EncryptionUtilFactory.getDefault(true).createRoadPda().sign(
-//                        "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=pdacorrection",
-//                        "[Appkey=606300949, Security=3c016261e68ea3760ffdcf5693f3fdea, berthcode=219202, parkstatus=0, token=355066066194848, userId=59, username=020108, MD50=0447431223af5457673881260ca7bbff, MD51=4771b54f089fa83400091ec263ab004b]",
-//                        "e40a1c78080249df994eaedb833d0434"
+//        isEquels(
+//                "getEncryptionValuePair_YiTingChe",
+//                "http://183.62.162.254:8899/operationapi/Index.aspx?versontype=1&method=addcomplain&parkuserid=15041418923729010&comcontent=%E6%8A%95%E8%AF%89%E5%86%85%E5%AE%B9&appkey=101280918&security=309262c162fb0b81f7034b2db16fb2f6&mobilecode=861845039126103&timestamp=20170223235745&SID=sidedc8e23dc073c5756ac7f9e76d6e1ee4&sign=4d6ea06e8ea5041f805590920e11f822",
+//                EncryptionUtilFactory.getDefault(true).creatParkFee().getEncryptionValuePair_YiTingChe(
+//                        "http://183.62.162.254:8899/operationapi/Index.aspx?versontype=1&method=addcomplain&parkuserid=15041418923729010&comcontent=%E6%8A%95%E8%AF%89%E5%86%85%E5%AE%B9",
+//                        "110100 110011 1100110 110110 1100100 110000 110100 1100110 110010 110000 110111 110000 1100100 1100010 110110 111000 1100100 110001 110010 110101 110100 111000 110110 110011 1100110 110011 111001 110001 111000 110110 110110 111001",
+//                        "110001 110000 110001 110010 111000 110000 111001 110001 111000",
+//                        "861845039126103",
+//                        "20170223235745",
+//                        "sidedc8e23dc073c5756ac7f9e76d6e1ee4"
 //                )
 //        );
+
+//        路边PDA
+        isEquels("sign",
+//                "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=equipinfo&sign=c131fea6fe173474e30b26ed7e073a49",
+//                EncryptionUtilFactory.getDefault(true).createRoadPda().sign(
+//                        "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=equipinfo",
+//                        "[Appkey=606300949, Security=5b82066ec0544ecc66d5ed62a7bce3de, adduserid=746, equiptype=1, faultcode=03, ordercontent=下半年你先休息, MD50=961524aa7d3a17bcf869227afa8604a2]",
+//                        "e40a1c78080249df994eaedb833d0434"
+//                )
+                "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=pdacorrection&sign=7dbb183021f5d2e31b3ea823c3fab4e3",
+                EncryptionUtilFactory.getDefault(true).createRoadPda().sign(
+                        "http://183.62.162.254:8899/OperationAPI/Index.aspx?method=pdacorrection",
+                        "[Appkey=606300949, Security=3c016261e68ea3760ffdcf5693f3fdea, berthcode=219202, parkstatus=0, token=355066066194848, userId=59, username=020108, MD50=0447431223af5457673881260ca7bbff, MD51=4771b54f089fa83400091ec263ab004b]",
+                        "e40a1c78080249df994eaedb833d0434"
+                )
+        );
     }
 
     private void isEquels(String method, String str1, String str2) {

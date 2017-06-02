@@ -12,7 +12,7 @@ android {
 
 
         ndk {
-            abiFilters "armeabi", "armeabi-v7a", "x86", "ENCRYP"
+            abiFilters "armeabi-v7a"
         }
         //让32位编译的.so文件能运行在64位的手机上（前提代码支持64位）
         // 配置NDK
