@@ -20,7 +20,7 @@ import java.util.TreeMap;
 public class CastStringUtil {
 
     /**
-     * 函数名称: parseData
+     * 函数名称: parseData    fds
      * 函数描述: 将json字符串转换为map
      *
      * @param data
