@@ -20,18 +20,20 @@ import java.util.TreeMap;
 public class CastStringUtil {
 
     /**
-     *
      * 函数名称: parseData
      * 函数描述: 将json字符串转换为map
+     *
      * @param data
      * @return
      */
-    public static TreeMap<String, String> jsonToMap(String data){
+    public static TreeMap<String, String> jsonToMap(String data) {
         GsonBuilder gb = new GsonBuilder();
         Gson g = gb.create();
-        TreeMap<String, String> map = g.fromJson(data, new TypeToken<TreeMap<String, String>>() {}.getType());
+        TreeMap<String, String> map = g.fromJson(data, new TypeToken<TreeMap<String, String>>() {
+        }.getType());
         return map;
     }
+
     public static TreeMap<String, String> stringToTreeMap(String singInfo) {
 
         String str1 = singInfo.replaceAll("\\{|\\}", "");//singInfo是一个map  toString后的字符串。
@@ -56,4 +58,23 @@ public class CastStringUtil {
 
         return map;
     }
+
+    public static TreeMap<String, String> eraseDel(TreeMap<String, String> treeMap) {
+        try {
+            for (String in : treeMap.keySet()) {
+                // map.keySet()返回的是所有key的值
+                String str = treeMap.get(in);// 得到每个key多对用value的值
+                if (str.contains(",")) {
+                    str = str.replaceAll(",", "，");
+                }
+                treeMap.put(in, str);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return treeMap;
+        }
+
+        return treeMap;
+    }
+
 }
