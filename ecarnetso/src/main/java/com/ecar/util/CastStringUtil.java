@@ -36,7 +36,7 @@ public class CastStringUtil {
         return map;
     }
 
-    private static TreeMap<String, String> stringToTreeMap(String singInfo) {
+    public static TreeMap<String, String> stringToTreeMap(String singInfo) {
 
         String str1 = singInfo.
                 replaceAll("\\{|\\}", "").
