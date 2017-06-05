@@ -19,6 +19,8 @@ import java.util.TreeMap;
 
 public class CastStringUtil {
 
+    final public static String DOT_SIGN = "&#*"; //特殊字符
+
     /**
      * 函数名称: parseData    fds
      * 函数描述: 将json字符串转换为map
@@ -34,16 +36,18 @@ public class CastStringUtil {
         return map;
     }
 
-    public static TreeMap<String, String> stringToTreeMap(String singInfo) {
+    private static TreeMap<String, String> stringToTreeMap(String singInfo) {
 
-        String str1 = singInfo.replaceAll("\\{|\\}", "");//singInfo是一个map  toString后的字符串。
-        String str2 = str1.replaceAll(" ", "");
-        String str3 = str2.replaceAll(",", "&");
+        String str1 = singInfo.
+                replaceAll("\\{|\\}", "").
+                replaceAll(" ", "");//singInfo是一个map  toString后的字符串。
+//        String str2 = str1.replaceAll(" ", "");
+//        String str3 = str2.replaceAll(DOT_SIGN, "&"); //
 
 
         TreeMap<String, String> map = new TreeMap<>();
-        if (!TextUtils.isEmpty(str3)) {
-            String[] resArray = str3.split("&");
+        if (!TextUtils.isEmpty(str1)) {
+            String[] resArray = str1.split(DOT_SIGN);
             if (0 != resArray.length) {
                 for (String arrayStr : resArray) {
                     if (!TextUtils.isEmpty(arrayStr)) {
@@ -60,12 +64,22 @@ public class CastStringUtil {
     }
 
     public static TreeMap<String, String> eraseDel(TreeMap<String, String> treeMap) {
+        if (treeMap == null) {
+            return new TreeMap<>();
+        }
+        //判断参数是否有逗号
+        String treeMapStr = treeMap.toString();
+        if (treeMapStr.split(",").length == (treeMapStr.split("=").length - 1)) {    //参数有逗号
+            return treeMap;
+        }
+
+        //用特殊字符替换英文逗号
         try {
             for (String in : treeMap.keySet()) {
                 // map.keySet()返回的是所有key的值
                 String str = treeMap.get(in);// 得到每个key多对用value的值
                 if (str.contains(",")) {
-                    str = str.replaceAll(",", "，");
+                    str = str.replaceAll(",", DOT_SIGN);
                 }
                 treeMap.put(in, str);
             }

@@ -2,7 +2,10 @@ package com.ecar.encryption.base;
 
 
 import com.ecar.encryption.EncryUtil;
+import com.ecar.util.CastStringUtil;
 import com.ecar.util.TagUtil;
+
+import java.util.TreeMap;
 
 import static com.ecar.util.TagUtil.printResult;
 
@@ -47,7 +50,7 @@ public class EncryUtilImpl extends EncryUtil {
     //一体化 ***************************************************
 
     protected String getSecurityMapKeys(
-            String tMap,
+            TreeMap<String,String> tMap,
             boolean encode,
             boolean isSign,
             boolean isNeedVe,
@@ -55,13 +58,13 @@ public class EncryUtilImpl extends EncryUtil {
             String requestKey) {
 
         String result = mGetSecurityMapKeys(
-                tMap,
+                CastStringUtil.eraseDel(tMap).toString(),
                 encode,
                 isSign,
                 isNeedVe,
                 appid,
                 requestKey
-        );
+        ).replace(CastStringUtil.DOT_SIGN,",");  //逗号恢复
 
         return getResult(result);
     }
