@@ -63,7 +63,7 @@ public class CastStringUtil {
         return map;
     }
 
-    public static TreeMap<String, String> eraseDel(TreeMap<String, String> treeMap) {
+    public static TreeMap<String, String> mEraseDel(TreeMap<String, String> treeMap) {
         if (treeMap == null) {
             return new TreeMap<>();
         }

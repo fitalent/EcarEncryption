@@ -58,7 +58,7 @@ public class EncryUtilImpl extends EncryUtil {
             String requestKey) {
 
         String result = mGetSecurityMapKeys(
-                CastStringUtil.eraseDel(tMap).toString(),
+                CastStringUtil.mEraseDel(tMap).toString(),
                 encode,
                 isSign,
                 isNeedVe,
