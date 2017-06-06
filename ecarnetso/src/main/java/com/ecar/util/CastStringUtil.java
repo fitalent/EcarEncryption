@@ -47,10 +47,11 @@ public class CastStringUtil {
 
         TreeMap<String, String> map = new TreeMap<>();
         if (!TextUtils.isEmpty(str1)) {
-            String[] resArray = str1.split(DOT_SIGN);
+            String[] resArray = str1.split(",");
             if (0 != resArray.length) {
                 for (String arrayStr : resArray) {
                     if (!TextUtils.isEmpty(arrayStr)) {
+                        arrayStr.replaceAll(DOT_SIGN,",");
                         int index = arrayStr.indexOf("=");
                         if (-1 != index) {
                             map.put(arrayStr.substring(0, index), arrayStr.substring(index + 1));
