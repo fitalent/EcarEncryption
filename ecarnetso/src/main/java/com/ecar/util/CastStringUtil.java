@@ -51,7 +51,7 @@ public class CastStringUtil {
             if (0 != resArray.length) {
                 for (String arrayStr : resArray) {
                     if (!TextUtils.isEmpty(arrayStr)) {
-                        arrayStr.replaceAll(DOT_SIGN,",");
+                        arrayStr = arrayStr.replaceAll(DOT_SIGN, ",");
                         int index = arrayStr.indexOf("=");
                         if (-1 != index) {
                             map.put(arrayStr.substring(0, index), arrayStr.substring(index + 1));
