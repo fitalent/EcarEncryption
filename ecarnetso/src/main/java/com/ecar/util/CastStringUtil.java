@@ -19,7 +19,7 @@ import java.util.TreeMap;
 
 public class CastStringUtil {
 
-    final public static String DOT_SIGN = "&#*"; //特殊字符
+    final public static String DOT_SIGN = "&#%"; //特殊字符
 
     /**
      * 函数名称: parseData    fds
