@@ -50,7 +50,7 @@ public class EncryUtilImpl extends EncryUtil {
     //一体化 ***************************************************
 
     protected String getSecurityMapKeys(
-            TreeMap<String,String> tMap,
+            TreeMap<String, String> tMap,
             boolean encode,
             boolean isSign,
             boolean isNeedVe,
@@ -64,7 +64,7 @@ public class EncryUtilImpl extends EncryUtil {
                 isNeedVe,
                 appid,
                 requestKey
-        ).replace(CastStringUtil.DOT_SIGN,",");  //逗号恢复
+        );  //逗号恢复
 
         return getResult(result);
     }
@@ -73,8 +73,7 @@ public class EncryUtilImpl extends EncryUtil {
     protected boolean checkSign(
             String sign,
             String content,
-            String requestKey)
-    {
+            String requestKey) {
 
         boolean result = mCheckSign(
                 sign,
