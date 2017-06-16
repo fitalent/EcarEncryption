@@ -199,7 +199,7 @@ public class MainAcitivity extends Activity {
         treeMap.put("comid", "200000018");
         treeMap.put("method", "prepaid，ParkTime");
         treeMap.put("module", "app");
-        treeMap.put("nickname", "&@;<&$：+");
+        treeMap.put("nickname", "&@;<&$：；；+￥");
 
 
         return treeMap;

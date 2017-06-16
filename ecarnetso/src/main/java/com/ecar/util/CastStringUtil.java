@@ -70,7 +70,8 @@ public class CastStringUtil {
         }
         //判断参数是否有逗号
         String treeMapStr = treeMap.toString();
-        if (treeMapStr.split(",").length == (treeMapStr.split("=").length - 1)) {    //参数有逗号
+        if (!treeMapStr.contains("+") &&
+                treeMapStr.split(",").length == (treeMapStr.split("=").length - 1)) {    //参数有逗号
             return treeMap;
         }
 
