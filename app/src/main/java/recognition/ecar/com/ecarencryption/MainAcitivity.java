@@ -90,7 +90,7 @@ public class MainAcitivity extends Activity {
 //                        "{ClientType=android, applyduration=30, applytype=1, berthcode=B100002, channel=1, comid=200000018, method=prepaymentParkingPay, module=app, paytype=4, price=0.81, service=Std, t=7196546423623734915703, ts=1496397719654, u=20170504114006093960886040500491, vehicletype=2}",
 //                        CastStringUtil.stringToTreeMap("{ClientType=android, berthcode=B10,0002, comid=200000018, method=prepaidParkTime, module=app, orderid=, parktime=30, service=Std, ts=1496401739985, u=20170504114006093960886040500491, v=20170602185905681582624078867184, vehicletype=1}"),
                         getMap(),
-                        false,
+                        true,
                         true,
                         true,
                         "510832011",
@@ -174,6 +174,9 @@ public class MainAcitivity extends Activity {
                         "e40a1c78080249df994eaedb833d0434"
                 )
         );
+
+        String str = "{ClientType=android, appId=510832011, berthcode=B10,0002, comid=200000018, method=prepaid，ParkTime, module=app, nickname=&@;<&&#%&#%，，，$2+, sign=62eddc9dc2480f0e43dcf5e7d652ab7a, ve=2}";
+        Log.d("tagutil", "printResult: " + CastStringUtil.stringToTreeMap(str));
     }
 
     private void isEquels(String method, String str1, String str2) {
@@ -191,12 +194,12 @@ public class MainAcitivity extends Activity {
 //        "{ClientType=android, berthcode=B10,0002, comid=200000018, method=prepaidParkTime, module=app, orderid=, parktime=30, service=Std, ts=1496401739985, u=20170504114006093960886040500491, v=20170602185905681582624078867184, vehicletype=1}"),
 
         TreeMap treeMap = new TreeMap();
-        treeMap.put("ClientType","android");
-        treeMap.put("berthcode","B10,0002");
-        treeMap.put("comid","200000018");
-        treeMap.put("method","prepaid，ParkTime");
-        treeMap.put("module","app");
-        treeMap.put("vetical","2");
+        treeMap.put("ClientType", "android");
+        treeMap.put("berthcode", "B10,0002");
+        treeMap.put("comid", "200000018");
+        treeMap.put("method", "prepaid，ParkTime");
+        treeMap.put("module", "app");
+        treeMap.put("nickname", "&@;<&$：+");
 
 
         return treeMap;

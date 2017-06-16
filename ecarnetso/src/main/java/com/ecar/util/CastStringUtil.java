@@ -82,6 +82,9 @@ public class CastStringUtil {
                 if (str.contains(",")) {
                     str = str.replaceAll(",", DOT_SIGN);
                 }
+                if (str.contains("+")) {  //过滤掉+
+                    str = str.replace("+", "");
+                }
                 treeMap.put(in, str);
             }
         } catch (Exception e) {
