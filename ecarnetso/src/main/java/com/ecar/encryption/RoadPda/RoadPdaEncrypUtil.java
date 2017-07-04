@@ -12,7 +12,7 @@ import com.ecar.encryption.base.EncryUtilImpl;
 public class RoadPdaEncrypUtil extends EncryUtilImpl {
 
     @Override
-    public String sign(String url, String signParam, String requestKey) {
+    public synchronized String sign(String url, String signParam, String requestKey) {
         return super.sign(url, signParam, requestKey);
     }
 }

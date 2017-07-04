@@ -11,7 +11,7 @@ import com.ecar.encryption.base.EncryUtilImpl;
 
 public class ParkFeeEncrypUtil extends EncryUtilImpl {
     @Override
-    public String getEncryptionValuePair_YiTingChe(String url, String signKey, String appKey, String imei, String trampTime, String sid) {
+    public synchronized String getEncryptionValuePair_YiTingChe(String url, String signKey, String appKey, String imei, String trampTime, String sid) {
         return super.getEncryptionValuePair_YiTingChe(url, signKey, appKey, imei, trampTime, sid);
     }
 }

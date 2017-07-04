@@ -11,45 +11,45 @@ import static com.ecar.util.TagUtil.printResult;
 
 public class EncryUtilImpl extends EncryUtil {
     //公共方法 ***************************************************
-    public String getMD5Code(String str) {
+    public synchronized String getMD5Code(String str) {
         String result = mGetMD5Code(str);
         return getResult(result);
     }
 
-    public String binstrToChar(String str) {
+    public synchronized String binstrToChar(String str) {
         String result = String.valueOf(mBinstrToChar(str));
         return getResult(result);
     }
 
-    public String binstrToStr(String str) {
+    public synchronized String binstrToStr(String str) {
         String result = mBinstrToStr(str);
         return getResult(result);
     }
 
-    public String strToBinstr(String str) {
+    public synchronized String strToBinstr(String str) {
         String result = mStrToBinstr(str);
         return getResult(result);
     }
 
-    public String getAppendUrl(String baseUrl, String treeMap, String parkUrl) {
+    public synchronized String getAppendUrl(String baseUrl, String treeMap, String parkUrl) {
         String result = mGetAppendUrl(baseUrl, treeMap, parkUrl);
         return getResult(result);
     }
 
-    public String getEncodedStr(String str) {
+    public synchronized String getEncodedStr(String str) {
         String result = mGetEncodedStr(str);
         return getResult(result);
     }
 
     //返回结果
-    private String getResult(String result) {
+    private synchronized String getResult(String result) {
         printResult(result);
         return result == null ? "" : result;
     }
 
     //一体化 ***************************************************
 
-    protected String getSecurityMapKeys(
+    protected synchronized String getSecurityMapKeys(
             TreeMap<String, String> tMap,
             boolean encode,
             boolean isSign,
@@ -70,7 +70,7 @@ public class EncryUtilImpl extends EncryUtil {
     }
 
 
-    protected boolean checkSign(
+    protected synchronized boolean checkSign(
             String sign,
             String content,
             String requestKey) {
@@ -104,7 +104,7 @@ public class EncryUtilImpl extends EncryUtil {
     }
 
     //路边停车 ***************************************************
-    protected String getEncryptionValuePair(String url,
+    protected  synchronized String getEncryptionValuePair(String url,
                                             String signKey,
                                             String appKey,
                                             String imei,
@@ -121,11 +121,11 @@ public class EncryUtilImpl extends EncryUtil {
         return getResult(result);
     }
 
-    protected String urlParse(String url) {
+    protected synchronized String urlParse(String url) {
         return mUrlParse(url);
     }
 
-    protected String getEncryptionUrl(String url,
+    protected synchronized String getEncryptionUrl(String url,
                                       String key) {
         String result = mGetEncryptionUrl(
                 url,
@@ -135,7 +135,7 @@ public class EncryUtilImpl extends EncryUtil {
     }
 
     //宜停车***************************************************
-    protected String getEncryptionValuePair_YiTingChe(String url,
+    protected synchronized String getEncryptionValuePair_YiTingChe(String url,
                                                       String signKey,
                                                       String appKey,
                                                       String imei,
@@ -153,7 +153,7 @@ public class EncryUtilImpl extends EncryUtil {
     }
 
     //pda ***************************************************
-    protected String sign(String url,
+    protected synchronized String  sign(String url,
                           String signParam,
                           String requestKey) {
         String result = mSign(

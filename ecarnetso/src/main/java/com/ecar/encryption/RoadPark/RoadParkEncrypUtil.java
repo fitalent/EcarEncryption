@@ -12,17 +12,17 @@ import com.ecar.encryption.base.EncryUtilImpl;
 public class RoadParkEncrypUtil extends EncryUtilImpl {
 
     @Override
-    public String urlParse(String url) {
+    public synchronized String urlParse(String url) {
         return super.urlParse(url);
     }
 
     @Override
-    public String getEncryptionValuePair(String url, String signKey, String appKey, String imei, String trampTime, String sid) {
+    public synchronized String getEncryptionValuePair(String url, String signKey, String appKey, String imei, String trampTime, String sid) {
         return super.getEncryptionValuePair(url, signKey, appKey, imei, trampTime, sid);
     }
 
     @Override
-    public String getEncryptionUrl(String url, String key) {
+    public synchronized String getEncryptionUrl(String url, String key) {
         return super.getEncryptionUrl(url, key);
     }
 }
