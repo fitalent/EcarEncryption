@@ -39,7 +39,8 @@ public class CastStringUtil {
     public static TreeMap<String, String> stringToTreeMap(String singInfo) {
 
         String str1 = singInfo.
-                replaceAll("\\{|\\}", "").
+                replaceAll("^\\{|\\}$", "").
+//                replaceAll("\\{|\\}", "").
                 replaceAll(" ", "");//singInfo是一个map  toString后的字符串。
 //        String str2 = str1.replaceAll(" ", "");
 //        String str3 = str2.replaceAll(DOT_SIGN, "&"); //
